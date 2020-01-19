@@ -1,5 +1,6 @@
 import UIKit
 import CoreData
+import Firebase
 
 final class CategoryViewController: UITableViewController {
     

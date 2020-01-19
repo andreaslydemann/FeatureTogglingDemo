@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -13,10 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window.rootViewController = UINavigationController(rootViewController: CategoryViewController())
         window.makeKeyAndVisible()
-
-        let providers: [FeatureProvider] = [DefaultFeatureProvider()]
         
-        FeatureService.shared.getFeatures(providers: providers) {
+        FirebaseApp.configure()
+
+        let firebaseRemoteConfig: FeatureProvider = FirebaseRemoteConfigProvider()
+
+        FeatureService.shared.fetchFeatures(provider: firebaseRemoteConfig) {
             print("Successfully fetched features.")
         }
     }

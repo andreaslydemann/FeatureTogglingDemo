@@ -1,6 +1,6 @@
 import Foundation
 
-struct DefaultFeatureProvider: FeatureProvider {
+struct LocalFeatureProvider: FeatureProvider {
     public func fetchEnabledFeatures(_ completion: @escaping([Feature]?) -> Void) {
     
         let features: [Feature] = [
