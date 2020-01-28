@@ -20,11 +20,10 @@
 		8E95147823C11A040012D76D /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95147623C11A040012D76D /* ItemListViewController.swift */; };
 		8E95147B23C148E00012D76D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95147A23C148E00012D76D /* UIColor+Ext.swift */; };
 		8E95147D23C153400012D76D /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95147C23C153400012D76D /* UITableView+Ext.swift */; };
-		8EE4F34223D49FA2002C0F8D /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F33D23D49FA2002C0F8D /* Feature.swift */; };
-		8EE4F34323D49FA2002C0F8D /* LocalFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F33E23D49FA2002C0F8D /* LocalFeatureProvider.swift */; };
-		8EE4F34523D49FA2002C0F8D /* FeatureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F34023D49FA2002C0F8D /* FeatureStorage.swift */; };
-		8EE4F34623D49FA2002C0F8D /* FeatureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F34123D49FA2002C0F8D /* FeatureService.swift */; };
-		8EE4F34923D4B390002C0F8D /* FeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F34823D4B390002C0F8D /* FeatureProvider.swift */; };
+		8EBDD7E523E0D80000F282AA /* LocalFeatureToggleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBDD7E423E0D80000F282AA /* LocalFeatureToggleProvider.swift */; };
+		8EE4F34223D49FA2002C0F8D /* FeatureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F33D23D49FA2002C0F8D /* FeatureToggle.swift */; };
+		8EE4F34623D49FA2002C0F8D /* FeatureToggleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F34123D49FA2002C0F8D /* FeatureToggleService.swift */; };
+		8EE4F34923D4B390002C0F8D /* FeatureToggleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F34823D4B390002C0F8D /* FeatureToggleProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,11 +44,10 @@
 		8E95147623C11A040012D76D /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		8E95147A23C148E00012D76D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		8E95147C23C153400012D76D /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
-		8EE4F33D23D49FA2002C0F8D /* Feature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
-		8EE4F33E23D49FA2002C0F8D /* LocalFeatureProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalFeatureProvider.swift; sourceTree = "<group>"; };
-		8EE4F34023D49FA2002C0F8D /* FeatureStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureStorage.swift; sourceTree = "<group>"; };
-		8EE4F34123D49FA2002C0F8D /* FeatureService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureService.swift; sourceTree = "<group>"; };
-		8EE4F34823D4B390002C0F8D /* FeatureProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureProvider.swift; sourceTree = "<group>"; };
+		8EBDD7E423E0D80000F282AA /* LocalFeatureToggleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeatureToggleProvider.swift; sourceTree = "<group>"; };
+		8EE4F33D23D49FA2002C0F8D /* FeatureToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureToggle.swift; sourceTree = "<group>"; };
+		8EE4F34123D49FA2002C0F8D /* FeatureToggleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureToggleService.swift; sourceTree = "<group>"; };
+		8EE4F34823D4B390002C0F8D /* FeatureToggleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureToggleProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,9 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				8EE4F34723D4B374002C0F8D /* Providers */,
-				8EE4F33D23D49FA2002C0F8D /* Feature.swift */,
-				8EE4F34123D49FA2002C0F8D /* FeatureService.swift */,
-				8EE4F34023D49FA2002C0F8D /* FeatureStorage.swift */,
+				8EE4F33D23D49FA2002C0F8D /* FeatureToggle.swift */,
+				8EE4F34123D49FA2002C0F8D /* FeatureToggleService.swift */,
 			);
 			path = "Feature Toggling";
 			sourceTree = "<group>";
@@ -149,8 +146,8 @@
 		8EE4F34723D4B374002C0F8D /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				8EE4F34823D4B390002C0F8D /* FeatureProvider.swift */,
-				8EE4F33E23D49FA2002C0F8D /* LocalFeatureProvider.swift */,
+				8EE4F34823D4B390002C0F8D /* FeatureToggleProvider.swift */,
+				8EBDD7E423E0D80000F282AA /* LocalFeatureToggleProvider.swift */,
 				8E6F14EB23D4B80200AC79A2 /* FirebaseRemoteConfigProvider.swift */,
 			);
 			path = Providers;
@@ -280,18 +277,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EE4F34623D49FA2002C0F8D /* FeatureService.swift in Sources */,
-				8EE4F34223D49FA2002C0F8D /* Feature.swift in Sources */,
+				8EE4F34623D49FA2002C0F8D /* FeatureToggleService.swift in Sources */,
+				8EE4F34223D49FA2002C0F8D /* FeatureToggle.swift in Sources */,
 				8E95147723C11A040012D76D /* CategoryViewController.swift in Sources */,
 				8E6F14EC23D4B80200AC79A2 /* FirebaseRemoteConfigProvider.swift in Sources */,
 				8E95145B23C117B70012D76D /* AppDelegate.swift in Sources */,
-				8EE4F34523D49FA2002C0F8D /* FeatureStorage.swift in Sources */,
-				8EE4F34923D4B390002C0F8D /* FeatureProvider.swift in Sources */,
-				8EE4F34323D49FA2002C0F8D /* LocalFeatureProvider.swift in Sources */,
+				8EE4F34923D4B390002C0F8D /* FeatureToggleProvider.swift in Sources */,
 				8E95145D23C117B70012D76D /* SceneDelegate.swift in Sources */,
 				8E95147B23C148E00012D76D /* UIColor+Ext.swift in Sources */,
 				8E95147D23C153400012D76D /* UITableView+Ext.swift in Sources */,
 				8E95146523C117B70012D76D /* TodoApp.xcdatamodeld in Sources */,
+				8EBDD7E523E0D80000F282AA /* LocalFeatureToggleProvider.swift in Sources */,
 				8E95147823C11A040012D76D /* ItemListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

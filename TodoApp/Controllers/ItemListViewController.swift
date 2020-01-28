@@ -38,7 +38,7 @@ final class ItemListViewController: UITableViewController, UISearchResultsUpdati
         navigationItem.title = selectedCategory?.title
         navigationItem.searchController = searchController
 
-        if FeatureService.shared.enabled(.addItem) {
+        if FeatureToggleService.shared.isEnabled(.addItem) {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                                 target: self,
                                                                 action: #selector(addButtonPressed))
