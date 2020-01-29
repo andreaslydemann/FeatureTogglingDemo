@@ -2,10 +2,10 @@ import Foundation
 
 struct LocalFeatureToggleProvider: FeatureToggleProvider {
     public func fetchEnabledFeatures(_ completion: @escaping FeatureCallback) {
-        let features: [FeatureToggle] = [
+        let enabledFeatures: [FeatureToggle] = [
             .addItem
         ]
         
-        completion(features)
+        completion(enabledFeatures)
     }
 }

@@ -7,15 +7,11 @@ protocol FeatureToggleProvider {
 }
 
 extension FeatureToggleProvider {
-    func getEnabledFeatures(byKeys keys: [String]) -> [FeatureToggle] {
-        var features: [FeatureToggle] = []
+    func getEnabledFeatures(featureToggles: [String: Bool]) -> [FeatureToggle] {
+        let enabledFeatures = featureToggles
+            .filter { $1 == true }
+            .compactMap { FeatureToggle(rawValue: $0.key ) }
         
-        for key in keys {
-            if let feature = FeatureToggle(rawValue: key) {
-                features.append(feature)
-            }
-        }
-        
-        return features
+        return enabledFeatures
     }
 }
