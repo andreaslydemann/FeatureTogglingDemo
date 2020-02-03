@@ -1,3 +1,3 @@
 extension Feature {
-    static let addItem = Feature(rawValue: "Add Item")
+    static let addItem = Feature(rawValue: "addItem")
 }

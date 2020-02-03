@@ -1,7 +1,7 @@
 import Foundation
 
-typealias FeatureToggleCallback = ([FeatureToggle]) -> Void
+public typealias FeatureToggleCallback = ([FeatureToggle]) -> Void
 
-protocol FeatureToggleProvider {
+public protocol FeatureToggleProvider {
     func fetchFeatureToggles(_ completion: @escaping FeatureToggleCallback)
 }

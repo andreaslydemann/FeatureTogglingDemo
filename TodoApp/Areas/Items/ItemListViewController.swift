@@ -1,5 +1,4 @@
 import UIKit
-import CoreData
 
 final class ItemListViewController: UITableViewController, UISearchResultsUpdating {
     

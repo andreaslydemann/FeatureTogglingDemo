@@ -1,42 +1,36 @@
 import Foundation
 
-final class FeatureToggleService {
+public final class FeatureToggleService {
     private init() { }
     
     static let shared = FeatureToggleService()
     
     private var featureToggles: [FeatureToggle] = []
     
-    public func fetchFeatureToggles(provider: FeatureToggleProvider, completion: @escaping () -> Void) {
-        provider.fetchFeatureToggles { [weak self] fetchedFeatureToggles in
+    public func fetchFeatureToggles(mainProvider: FeatureToggleProvider, fallbackProvider: FeatureToggleProvider?, completion: @escaping () -> Void) {
+        mainProvider.fetchFeatureToggles { [weak self] fetchedFeatureToggles in
             guard let self = self else { return }
             
             if fetchedFeatureToggles.count > 0 {
                 self.featureToggles = fetchedFeatureToggles
-            } else {
-                self.useDefaultFeatureToggles()
+            } else if let fallbackProvider = fallbackProvider {
+                self.useFallbackFeatureToggles(fallbackProvider)
             }
             
             completion()
         }
     }
     
-    public func isEnabled(_ featureName: Feature) -> Bool {
-        let feature = featureToggles.first(where: { $0.name == featureName })
+    public func isEnabled(_ feature: Feature) -> Bool {
+        let feature = featureToggles.first(where: { $0.feature == feature })
         return feature?.enabled ?? false
     }
     
-    private func useDefaultFeatureToggles() {
-        let defaultProvider = getDefaultFeatureToggleProvider()
-        
-        defaultProvider.fetchFeatureToggles { [weak self] featureToggles in
+    private func useFallbackFeatureToggles(_ fallbackProvider: FeatureToggleProvider) {
+        fallbackProvider.fetchFeatureToggles { [weak self] featureToggles in
             if let self = self {
                 self.featureToggles = featureToggles
             }
         }
-    }
-    
-    private func getDefaultFeatureToggleProvider() -> FeatureToggleProvider {
-        return LocalFeatureToggleProvider()
     }
 }
