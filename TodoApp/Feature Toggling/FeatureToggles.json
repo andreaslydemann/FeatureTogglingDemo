@@ -1,0 +1,10 @@
+{
+    "featureToggles": [{
+        "name": "Add Item",
+        "enabled": true
+    },
+    {
+        "name": "Add Category",
+        "enabled": true
+    }]
+}

@@ -11,19 +11,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         defer { self.window = window }
 
         window.windowScene = windowScene
-
-        window.rootViewController = UINavigationController(rootViewController: CategoryViewController())
-        window.makeKeyAndVisible()
         
         prepareFirebaseRemoteConfig()
+
+        let categoryVC = CategoryViewController(featureToggleService: .shared)
+        
+        window.rootViewController = UINavigationController(rootViewController: categoryVC)
+        window.makeKeyAndVisible()
     }
     
     private func prepareFirebaseRemoteConfig() {
         FirebaseApp.configure()
         
-        let firebaseRemoteConfig = FirebaseRemoteConfigProvider()
-
-        FeatureToggleService.shared.fetchFeatureToggles(provider: firebaseRemoteConfig) {
+        FeatureToggleService.shared.fetchFeatureToggles(provider: FirebaseRemoteConfigProvider()) {
             print("Feature toggles successfully fetched.")
         }
     }

@@ -21,9 +21,16 @@
 		8E95147B23C148E00012D76D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95147A23C148E00012D76D /* UIColor+Ext.swift */; };
 		8E95147D23C153400012D76D /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95147C23C153400012D76D /* UITableView+Ext.swift */; };
 		8EBDD7E523E0D80000F282AA /* LocalFeatureToggleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBDD7E423E0D80000F282AA /* LocalFeatureToggleProvider.swift */; };
-		8EE4F34223D49FA2002C0F8D /* FeatureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F33D23D49FA2002C0F8D /* FeatureToggle.swift */; };
 		8EE4F34623D49FA2002C0F8D /* FeatureToggleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F34123D49FA2002C0F8D /* FeatureToggleService.swift */; };
 		8EE4F34923D4B390002C0F8D /* FeatureToggleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE4F34823D4B390002C0F8D /* FeatureToggleProvider.swift */; };
+		8EEF307C23E7F4DE00A140E5 /* FeatureToggles.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EEF307B23E7F4DE00A140E5 /* FeatureToggles.json */; };
+		8EEF307E23E7F5CC00A140E5 /* ParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF307D23E7F5CC00A140E5 /* ParsingService.swift */; };
+		8EEF308023E7F74B00A140E5 /* FeatureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF307F23E7F74B00A140E5 /* FeatureToggle.swift */; };
+		8EEF308223E7F9D500A140E5 /* LocalFeatureToggleProvider+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF308123E7F9D500A140E5 /* LocalFeatureToggleProvider+Internal.swift */; };
+		8EEF308723E80B0D00A140E5 /* CategoryFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF308623E80B0D00A140E5 /* CategoryFeatures.swift */; };
+		8EEF308923E80B1E00A140E5 /* ItemFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF308823E80B1E00A140E5 /* ItemFeatures.swift */; };
+		8EEF308C23E80F1300A140E5 /* JSONParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF308B23E80F1300A140E5 /* JSONParsingService.swift */; };
+		8EEF309223E819D500A140E5 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF309123E819D500A140E5 /* Feature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,9 +52,16 @@
 		8E95147A23C148E00012D76D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		8E95147C23C153400012D76D /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		8EBDD7E423E0D80000F282AA /* LocalFeatureToggleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeatureToggleProvider.swift; sourceTree = "<group>"; };
-		8EE4F33D23D49FA2002C0F8D /* FeatureToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureToggle.swift; sourceTree = "<group>"; };
 		8EE4F34123D49FA2002C0F8D /* FeatureToggleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureToggleService.swift; sourceTree = "<group>"; };
 		8EE4F34823D4B390002C0F8D /* FeatureToggleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureToggleProvider.swift; sourceTree = "<group>"; };
+		8EEF307B23E7F4DE00A140E5 /* FeatureToggles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FeatureToggles.json; sourceTree = "<group>"; };
+		8EEF307D23E7F5CC00A140E5 /* ParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingService.swift; sourceTree = "<group>"; };
+		8EEF307F23E7F74B00A140E5 /* FeatureToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureToggle.swift; sourceTree = "<group>"; };
+		8EEF308123E7F9D500A140E5 /* LocalFeatureToggleProvider+Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalFeatureToggleProvider+Internal.swift"; sourceTree = "<group>"; };
+		8EEF308623E80B0D00A140E5 /* CategoryFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFeatures.swift; sourceTree = "<group>"; };
+		8EEF308823E80B1E00A140E5 /* ItemFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFeatures.swift; sourceTree = "<group>"; };
+		8EEF308B23E80F1300A140E5 /* JSONParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingService.swift; sourceTree = "<group>"; };
+		8EEF309123E819D500A140E5 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +109,7 @@
 				8E95145A23C117B70012D76D /* AppDelegate.swift */,
 				8E95145C23C117B70012D76D /* SceneDelegate.swift */,
 				8EE4F33C23D49F78002C0F8D /* Feature Toggling */,
-				8E95147123C119720012D76D /* Controllers */,
+				8EEF308323E80AC800A140E5 /* Areas */,
 				8E95147323C1197F0012D76D /* Resources */,
 				8E95147923C148CB0012D76D /* Utilities */,
 				8E95146323C117B70012D76D /* TodoApp.xcdatamodeld */,
@@ -103,15 +117,6 @@
 				8E6F14ED23D4B93800AC79A2 /* GoogleService-Info.plist */,
 			);
 			path = TodoApp;
-			sourceTree = "<group>";
-		};
-		8E95147123C119720012D76D /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				8E95147523C11A040012D76D /* CategoryViewController.swift */,
-				8E95147623C11A040012D76D /* ItemListViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		8E95147323C1197F0012D76D /* Resources */ = {
@@ -136,9 +141,11 @@
 		8EE4F33C23D49F78002C0F8D /* Feature Toggling */ = {
 			isa = PBXGroup;
 			children = (
+				8EEF307B23E7F4DE00A140E5 /* FeatureToggles.json */,
 				8EE4F34723D4B374002C0F8D /* Providers */,
-				8EE4F33D23D49FA2002C0F8D /* FeatureToggle.swift */,
 				8EE4F34123D49FA2002C0F8D /* FeatureToggleService.swift */,
+				8EEF307F23E7F74B00A140E5 /* FeatureToggle.swift */,
+				8EEF309123E819D500A140E5 /* Feature.swift */,
 			);
 			path = "Feature Toggling";
 			sourceTree = "<group>";
@@ -146,11 +153,49 @@
 		8EE4F34723D4B374002C0F8D /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				8EEF308A23E80EEC00A140E5 /* ParsingService */,
 				8EE4F34823D4B390002C0F8D /* FeatureToggleProvider.swift */,
 				8EBDD7E423E0D80000F282AA /* LocalFeatureToggleProvider.swift */,
+				8EEF308123E7F9D500A140E5 /* LocalFeatureToggleProvider+Internal.swift */,
 				8E6F14EB23D4B80200AC79A2 /* FirebaseRemoteConfigProvider.swift */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		8EEF308323E80AC800A140E5 /* Areas */ = {
+			isa = PBXGroup;
+			children = (
+				8EEF308423E80AD200A140E5 /* Categories */,
+				8EEF308523E80AD900A140E5 /* Items */,
+			);
+			path = Areas;
+			sourceTree = "<group>";
+		};
+		8EEF308423E80AD200A140E5 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8EEF308623E80B0D00A140E5 /* CategoryFeatures.swift */,
+				8E95147523C11A040012D76D /* CategoryViewController.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		8EEF308523E80AD900A140E5 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				8EEF308823E80B1E00A140E5 /* ItemFeatures.swift */,
+				8E95147623C11A040012D76D /* ItemListViewController.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		8EEF308A23E80EEC00A140E5 /* ParsingService */ = {
+			isa = PBXGroup;
+			children = (
+				8EEF307D23E7F5CC00A140E5 /* ParsingService.swift */,
+				8EEF308B23E80F1300A140E5 /* JSONParsingService.swift */,
+			);
+			path = ParsingService;
 			sourceTree = "<group>";
 		};
 		C54E2D008EB02E4FDCAF55D3 /* Frameworks */ = {
@@ -225,6 +270,7 @@
 				8E6F14EE23D4B93800AC79A2 /* GoogleService-Info.plist in Resources */,
 				8E56FF3223C223BD007B32D1 /* ColorTheme.xcassets in Resources */,
 				8E95146723C117BB0012D76D /* Assets.xcassets in Resources */,
+				8EEF307C23E7F4DE00A140E5 /* FeatureToggles.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,12 +324,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EE4F34623D49FA2002C0F8D /* FeatureToggleService.swift in Sources */,
-				8EE4F34223D49FA2002C0F8D /* FeatureToggle.swift in Sources */,
+				8EEF308223E7F9D500A140E5 /* LocalFeatureToggleProvider+Internal.swift in Sources */,
 				8E95147723C11A040012D76D /* CategoryViewController.swift in Sources */,
+				8EEF308923E80B1E00A140E5 /* ItemFeatures.swift in Sources */,
+				8EEF308C23E80F1300A140E5 /* JSONParsingService.swift in Sources */,
 				8E6F14EC23D4B80200AC79A2 /* FirebaseRemoteConfigProvider.swift in Sources */,
+				8EEF309223E819D500A140E5 /* Feature.swift in Sources */,
 				8E95145B23C117B70012D76D /* AppDelegate.swift in Sources */,
+				8EEF308723E80B0D00A140E5 /* CategoryFeatures.swift in Sources */,
 				8EE4F34923D4B390002C0F8D /* FeatureToggleProvider.swift in Sources */,
 				8E95145D23C117B70012D76D /* SceneDelegate.swift in Sources */,
+				8EEF307E23E7F5CC00A140E5 /* ParsingService.swift in Sources */,
+				8EEF308023E7F74B00A140E5 /* FeatureToggle.swift in Sources */,
 				8E95147B23C148E00012D76D /* UIColor+Ext.swift in Sources */,
 				8E95147D23C153400012D76D /* UITableView+Ext.swift in Sources */,
 				8E95146523C117B70012D76D /* TodoApp.xcdatamodeld in Sources */,

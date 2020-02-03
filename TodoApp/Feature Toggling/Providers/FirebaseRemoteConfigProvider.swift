@@ -2,12 +2,11 @@ import Foundation
 import Firebase
 
 struct FirebaseRemoteConfigProvider: FeatureToggleProvider {
-    public func fetchEnabledFeatures(_ completion: @escaping FeatureCallback) {
+    public func fetchFeatureToggles(_ completion: @escaping FeatureToggleCallback) {
         let remoteConfig = RemoteConfig.remoteConfig()
         let keys = remoteConfig.allKeys(from: .remote)
-        let featureToggles = Dictionary(uniqueKeysWithValues: keys.map { ($0, remoteConfig[$0].boolValue) })
-        let enabledFeatures = getEnabledFeatures(featureToggles: featureToggles)
+        let featureToggles = keys.map { FeatureToggle(name: Feature(rawValue: $0), enabled: remoteConfig[$0].boolValue) }
         
-        completion(enabledFeatures)
+        completion(featureToggles)
     }
 }
