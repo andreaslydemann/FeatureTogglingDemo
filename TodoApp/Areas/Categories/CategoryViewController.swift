@@ -1,10 +1,15 @@
 import UIKit
 import CoreData
-import Firebase
 
 final class CategoryViewController: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var featureToggleService: FeatureToggleService!
+    
+    convenience init(featureToggleService: FeatureToggleService) {
+        self.init()
+        self.featureToggleService = featureToggleService
+    }
     
     var categories = [Category]()
     
@@ -25,9 +30,12 @@ final class CategoryViewController: UITableViewController {
     
     func setupNavigationBar() {
         navigationItem.title = "TodoApp"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                            target: self,
-                                                            action: #selector(addButtonPressed))
+        
+        if featureToggleService.isEnabled(.addCategory) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                                target: self,
+                                                                action: #selector(addButtonPressed))
+        }
         
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "Active")!]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -76,8 +84,7 @@ extension CategoryViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ItemListViewController()
-        vc.selectedCategory = categories[indexPath.row]
+        let vc = ItemListViewController(selectedCategory: categories[indexPath.row], FeatureToggleService: .shared)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -135,7 +142,7 @@ extension CategoryViewController {
         
         alertController.addAction(addAction)
         alertController.addAction(cancelAction)
-
+        
         present(alertController, animated: true, completion: nil)
     }
 }

@@ -5,6 +5,14 @@ final class ItemListViewController: UITableViewController, UISearchResultsUpdati
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    private var featureToggleService: FeatureToggleService!
+    
+    convenience init(selectedCategory: Category, FeatureToggleService: FeatureToggleService) {
+        self.init()
+        self.selectedCategory = selectedCategory
+        self.featureToggleService = FeatureToggleService
+    }
+    
     var items = [Item]()
     var searchResults = [Item]()
     
@@ -38,7 +46,7 @@ final class ItemListViewController: UITableViewController, UISearchResultsUpdati
         navigationItem.title = selectedCategory?.title
         navigationItem.searchController = searchController
 
-        if FeatureToggleService.shared.isEnabled(.addItem) {
+        if featureToggleService.isEnabled(.addItem) {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                                 target: self,
                                                                 action: #selector(addButtonPressed))

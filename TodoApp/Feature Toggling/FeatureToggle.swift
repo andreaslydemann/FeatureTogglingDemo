@@ -1,9 +1,13 @@
 import Foundation
 
-enum FeatureToggle: String, CaseIterable {
-    case addItem
-    
-    static let enabledByDefault: [FeatureToggle] = [
-        .addItem
-    ]
+public struct FeatureToggle {
+    let name: Feature
+    let enabled: Bool
+}
+
+extension FeatureToggle: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case name
+        case enabled
+    }
 }
