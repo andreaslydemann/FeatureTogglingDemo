@@ -3,15 +3,15 @@ import CoreData
 
 final class CategoryViewController: UITableViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var categories = [Category]()
+    private var coreDataConnection: CoreDataConnection!
     private var featureToggleService: FeatureToggleService!
     
-    convenience init(featureToggleService: FeatureToggleService) {
+    convenience init(coreDataConnection: CoreDataConnection, featureToggleService: FeatureToggleService) {
         self.init()
+        self.coreDataConnection = coreDataConnection
         self.featureToggleService = featureToggleService
     }
-    
-    var categories = [Category]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,6 @@ final class CategoryViewController: UITableViewController {
 }
 
 // MARK: - TableView DataSource Methods
-
 extension CategoryViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
@@ -67,54 +66,49 @@ extension CategoryViewController {
 }
 
 // MARK: - TableView Delegate Methods
-
 extension CategoryViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contextItem = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (contextualAction, view, boolValue) in
             guard let self = self else { return }
             
-            self.context.delete(self.categories[indexPath.row])
-            self.categories.remove(at: indexPath.row)
-            self.saveCategories()
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.coreDataConnection.deleteManagedObject(managedObject: self.categories[indexPath.row]) { result in
+                if result {
+                    self.categories.remove(at: indexPath.row)
+                    self.saveCategories()
+                    
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
         }
         
         return UISwipeActionsConfiguration(actions: [contextItem])
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ItemListViewController(selectedCategory: categories[indexPath.row], FeatureToggleService: .shared)
+        let vc = ItemListViewController(selectedCategory: categories[indexPath.row], coreDataConnection: .shared, featureToggleService: .shared)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 // MARK: - Data Manipulation Methods
-
 extension CategoryViewController {
+    func createNewCategory() -> Category {
+        return Category(context: self.coreDataConnection.persistentContainer.viewContext)
+    }
+    
     func saveCategories() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving category \(error)")
-        }
+        self.coreDataConnection.saveContext()
     }
     
     func loadCategories() {
-        let request : NSFetchRequest<Category> = Category.fetchRequest()
-        
-        do {
-            categories = try context.fetch(request)
-        } catch {
-            print("Error loading categories \(error)")
+        if let categories = coreDataConnection.fetchManagedObjects(Category.self) as? [Category] {
+            self.categories = categories
+            tableView.reloadData()
         }
-        
-        tableView.reloadData()
     }
 }
 
 // MARK: - Add New Categories
-
 extension CategoryViewController {
     @objc func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
@@ -129,7 +123,7 @@ extension CategoryViewController {
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] action in
             guard let self = self else { return }
             
-            let newCategory = Category(context: self.context)
+            let newCategory = self.createNewCategory()
             newCategory.title = textField.text!
             
             self.categories.append(newCategory)

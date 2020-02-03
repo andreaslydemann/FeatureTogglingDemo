@@ -3,18 +3,17 @@ import CoreData
 
 final class ItemListViewController: UITableViewController, UISearchResultsUpdating {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+    private var items = [Item]()
+    private var searchResults = [Item]()
+    private var coreDataConnection: CoreDataConnection!
     private var featureToggleService: FeatureToggleService!
     
-    convenience init(selectedCategory: Category, FeatureToggleService: FeatureToggleService) {
+    convenience init(selectedCategory: Category, coreDataConnection: CoreDataConnection, featureToggleService: FeatureToggleService) {
         self.init()
         self.selectedCategory = selectedCategory
-        self.featureToggleService = FeatureToggleService
+        self.coreDataConnection = coreDataConnection
+        self.featureToggleService = featureToggleService
     }
-    
-    var items = [Item]()
-    var searchResults = [Item]()
     
     var selectedCategory : Category? {
         didSet {
@@ -45,7 +44,7 @@ final class ItemListViewController: UITableViewController, UISearchResultsUpdati
     func setupNavigationBar() {
         navigationItem.title = selectedCategory?.title
         navigationItem.searchController = searchController
-
+        
         if featureToggleService.isEnabled(.addItem) {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                                 target: self,
@@ -62,7 +61,6 @@ final class ItemListViewController: UITableViewController, UISearchResultsUpdati
 }
     
 // MARK: - TableView DataSource Methods
-
 extension ItemListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isSearchBarEmpty ? items.count : searchResults.count
@@ -92,17 +90,19 @@ extension ItemListViewController {
 }
 
 // MARK: - TableView Delegate Methods
-
 extension ItemListViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contextItem = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (contextualAction, view, boolValue) in
             guard let self = self else { return }
             
-            self.context.delete(self.items[indexPath.row])
-            self.items.remove(at: indexPath.row)
-            self.saveItems()
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.coreDataConnection.deleteManagedObject(managedObject: self.items[indexPath.row]) { result in
+                if result {
+                    self.items.remove(at: indexPath.row)
+                    self.saveItems()
+
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
         }
         
         return UISwipeActionsConfiguration(actions: [contextItem])
@@ -134,7 +134,7 @@ extension ItemListViewController {
         let addAction = UIAlertAction(title: "Add Item", style: .default) { [weak self] action in
             guard let self = self else { return }
             
-            let newItem = Item(context: self.context)
+            let newItem = self.createNewItem()
             newItem.title = textField.text!
             newItem.done = false
             newItem.parentCategory = self.selectedCategory
@@ -155,37 +155,24 @@ extension ItemListViewController {
 }
 
 // MARK: - Data Manipulation Methods
-
 extension ItemListViewController {
-    func saveItems() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
-        }
+    func createNewItem() -> Item {
+        return Item(context: self.coreDataConnection.persistentContainer.viewContext)
     }
     
-    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
-        let categoryPredicate = NSPredicate(format: "parentCategory.title MATCHES %@", selectedCategory!.title!)
-        
-        if let additionsPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionsPredicate])
-        } else {
-            request.predicate = categoryPredicate
+    func saveItems() {
+        coreDataConnection.saveContext()
+    }
+
+    func loadItems() {
+        if let items = coreDataConnection.fetchManagedObjects(Item.self) as? [Item] {
+            self.items = items
+            tableView.reloadData()
         }
-        
-        do {
-            items = try context.fetch(request)
-        } catch{
-            print("Error fetching data from context \(error)")
-        }
-        
-        tableView.reloadData()
     }
 }
 
 // MARK: - Search Bar Methods
-
 extension ItemListViewController {
     func updateSearchResults(for searchController: UISearchController) {
         let searchPredicate = NSPredicate(format: "title CONTAINS[cd] %@", searchController.searchBar.text!)

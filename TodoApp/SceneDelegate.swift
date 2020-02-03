@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         prepareFirebaseRemoteConfig()
 
-        let categoryVC = CategoryViewController(featureToggleService: .shared)
+        let categoryVC = CategoryViewController(coreDataConnection: .shared, featureToggleService: .shared)
         
         window.rootViewController = UINavigationController(rootViewController: categoryVC)
         window.makeKeyAndVisible()

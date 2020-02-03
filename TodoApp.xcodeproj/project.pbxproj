@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55B79464FAD444050CC9633D /* Pods_TodoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46807040E694F888F91B4F7E /* Pods_TodoApp.framework */; };
+		8E29D4DF23E8810500B4AB0A /* CoreDataConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29D4DE23E8810500B4AB0A /* CoreDataConnection.swift */; };
 		8E56FF3223C223BD007B32D1 /* ColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E56FF3123C223BD007B32D1 /* ColorTheme.xcassets */; };
 		8E6F14EC23D4B80200AC79A2 /* FirebaseRemoteConfigProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F14EB23D4B80200AC79A2 /* FirebaseRemoteConfigProvider.swift */; };
 		8E6F14EE23D4B93800AC79A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F14ED23D4B93800AC79A2 /* GoogleService-Info.plist */; };
@@ -37,6 +38,7 @@
 		46807040E694F888F91B4F7E /* Pods_TodoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB109B0C328D04714AFF9B0 /* Pods-TodoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoApp/Pods-TodoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8D6A4DF425F0B4ED6793F027 /* Pods-TodoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApp.release.xcconfig"; path = "Target Support Files/Pods-TodoApp/Pods-TodoApp.release.xcconfig"; sourceTree = "<group>"; };
+		8E29D4DE23E8810500B4AB0A /* CoreDataConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConnection.swift; sourceTree = "<group>"; };
 		8E56FF3123C223BD007B32D1 /* ColorTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorTheme.xcassets; sourceTree = "<group>"; };
 		8E6F14EB23D4B80200AC79A2 /* FirebaseRemoteConfigProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigProvider.swift; sourceTree = "<group>"; };
 		8E6F14ED23D4B93800AC79A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				8E95147A23C148E00012D76D /* UIColor+Ext.swift */,
 				8E95147C23C153400012D76D /* UITableView+Ext.swift */,
+				8E29D4DE23E8810500B4AB0A /* CoreDataConnection.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				8E6F14EC23D4B80200AC79A2 /* FirebaseRemoteConfigProvider.swift in Sources */,
 				8EEF309223E819D500A140E5 /* Feature.swift in Sources */,
 				8E95145B23C117B70012D76D /* AppDelegate.swift in Sources */,
+				8E29D4DF23E8810500B4AB0A /* CoreDataConnection.swift in Sources */,
 				8EEF308723E80B0D00A140E5 /* CategoryFeatures.swift in Sources */,
 				8EE4F34923D4B390002C0F8D /* FeatureToggleProvider.swift in Sources */,
 				8E95145D23C117B70012D76D /* SceneDelegate.swift in Sources */,
