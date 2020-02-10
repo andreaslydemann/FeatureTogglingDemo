@@ -23,8 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func prepareFirebaseRemoteConfig() {
         FirebaseApp.configure()
         
-        FeatureToggleService.shared.fetchFeatureToggles(mainProvider: FirebaseRemoteConfigProvider(), fallbackProvider: LocalFeatureToggleProvider()) {
-            print("Feature toggles successfully fetched.")
+        FeatureToggleService.shared.fetchFeatureToggles(mainProvider: FirebaseRemoteConfigProvider(), fallbackProvider: LocalFeatureToggleProvider()) { featureToggles in
+            print("Feature toggles successfully fetched: ", featureToggles)
         }
     }
 }

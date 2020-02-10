@@ -7,7 +7,7 @@ public final class FeatureToggleService {
     
     private var featureToggles: [FeatureToggle] = []
     
-    public func fetchFeatureToggles(mainProvider: FeatureToggleProvider, fallbackProvider: FeatureToggleProvider?, completion: @escaping () -> Void) {
+    public func fetchFeatureToggles(mainProvider: FeatureToggleProvider, fallbackProvider: FeatureToggleProvider?, completion: @escaping ([FeatureToggle]) -> Void) {
         mainProvider.fetchFeatureToggles { [weak self] fetchedFeatureToggles in
             guard let self = self else { return }
             
@@ -17,7 +17,7 @@ public final class FeatureToggleService {
                 self.useFallbackFeatureToggles(fallbackProvider)
             }
             
-            completion()
+            completion(self.featureToggles)
         }
     }
     
