@@ -4,6 +4,7 @@ final class ItemListViewController: UITableViewController, UISearchResultsUpdati
     
     private var items = [Item]()
     private var searchResults = [Item]()
+    private var selectedCategory : Category!
     private var coreDataConnection: CoreDataConnection!
     private var featureToggleService: FeatureToggleService!
     
@@ -12,14 +13,10 @@ final class ItemListViewController: UITableViewController, UISearchResultsUpdati
         self.selectedCategory = selectedCategory
         self.coreDataConnection = coreDataConnection
         self.featureToggleService = featureToggleService
+        
+        loadItems()
     }
-    
-    var selectedCategory : Category? {
-        didSet {
-            loadItems()
-        }
-    }
-    
+
     lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.searchResultsUpdater = self
